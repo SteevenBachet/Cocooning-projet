@@ -34,7 +34,7 @@ public class PlayerCollision : MonoBehaviour
                 hurtPart.tag = "Untagged";
             }
 
-            Destroy(collision.gameObject.transform.parent.gameObject, 0.3f);
+            Destroy(collision.gameObject.transform.parent.parent.gameObject, 0.3f);
         }
     }
 }

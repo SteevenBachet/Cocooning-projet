@@ -14,10 +14,14 @@ public class EndScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.tag == "poulemom")
+        if (other.gameObject.tag == "poulemom" && PlayerInfo.pi.nbPoulet >= 4)
         {
             infosTxt.text = "Appuyez sur E pour réunir les poules avec leur maman";
             canOpen = true;
+        }
+        else if ((other.gameObject.tag == "poulemom" && PlayerInfo.pi.nbPoulet < 4))
+        {
+            infosTxt.text = "Vous n'avez pas récupéré toutes les poules";
         }
     }
 
@@ -32,9 +36,10 @@ public class EndScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && PlayerInfo.pi.nbPoulet >= 0 && canOpen)
+        if (Input.GetKeyDown(KeyCode.E) && PlayerInfo.pi.nbPoulet >= 4 && canOpen)
         {
             SceneManager.LoadScene(2);
         }
+        
     }
 }
